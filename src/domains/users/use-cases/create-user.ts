@@ -1,6 +1,5 @@
-import { generateHash } from "../../../shared/utils/encrypt"
-import type { IUserDTO } from "../dtos/users.dto"
-import type { IUsersRepository } from "../repositories/users-repository.interface"
+import type { IUserDTO } from "../dtos/user.dto"
+import type { IUsersRepository } from "../repositories/user.interface"
 
 export class CreateUser {
   constructor(private usersRepository: IUsersRepository) {}
@@ -12,9 +11,9 @@ export class CreateUser {
       throw new Error("User already exists")
     }
 
-    const hashedPassword = await generateHash(user.password)
+    //onst hashedPassword = await generateHash(user.password)
 
-    Object.assign(user, { password: hashedPassword })
+    //ject.assign(user, { password: hashedPassword })
 
     await this.usersRepository.create(user)
   }
